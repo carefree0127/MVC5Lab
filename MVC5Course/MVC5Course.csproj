@@ -197,6 +197,9 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>客戶資料.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\VW客戶資料統計表.cs">
       <DependentUpon>客戶資料.tt</DependentUpon>
     </Compile>

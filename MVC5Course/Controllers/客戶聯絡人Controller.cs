@@ -18,7 +18,7 @@ namespace MVC5Course.Controllers
         public ActionResult Index()
         {
             var 客戶聯絡人 = db.客戶聯絡人.Include(客 => 客.客戶資料);
-            return View(客戶聯絡人.ToList());
+            return View(客戶聯絡人.Where(m => m.is刪除 == false).ToList());
         }
 
         // GET: 客戶聯絡人/Details/5
@@ -115,7 +115,8 @@ namespace MVC5Course.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶聯絡人 客戶聯絡人 = db.客戶聯絡人.Find(id);
-            db.客戶聯絡人.Remove(客戶聯絡人);
+            //db.客戶聯絡人.Remove(客戶聯絡人);
+            客戶聯絡人.is刪除 = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
