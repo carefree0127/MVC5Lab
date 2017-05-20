@@ -18,7 +18,7 @@ namespace MVC5Course.Models
                 //Create
                 if (db.客戶聯絡人.Where(m => m.客戶Id == this.客戶Id && m.Email == this.Email).Any())
                 {
-                    yield return new ValidationResult("此Email已被使用!");
+                    yield return new ValidationResult("此Email已被使用!",new string[] {"Email" });
                 }
             }
             else
@@ -26,7 +26,7 @@ namespace MVC5Course.Models
                 //Edit
                 if (db.客戶聯絡人.Where(m => m.客戶Id == this.客戶Id && m.Id != this.Id && m.Email == this.Email).Any())
                 {
-                    yield return new ValidationResult("此Email已被使用!");
+                    yield return new ValidationResult("此Email已被使用!", new string[] { "Email" });
                 }
             }
             yield return ValidationResult.Success;
