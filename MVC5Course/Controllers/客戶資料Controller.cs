@@ -123,5 +123,12 @@ namespace MVC5Course.Controllers
             }
             base.Dispose(disposing);
         }
+
+        #region 客戶資料清單頁
+        public ActionResult 客戶資料統計表()
+        {
+            return View();
+        }
+        #endregion
     }
 }
