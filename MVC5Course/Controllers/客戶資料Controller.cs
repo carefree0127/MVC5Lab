@@ -127,7 +127,8 @@ namespace MVC5Course.Controllers
         #region 客戶資料清單頁
         public ActionResult 客戶資料統計表()
         {
-            return View();
+            var data = db.VW客戶資料統計表.ToList();
+            return View(data);
         }
         #endregion
     }
