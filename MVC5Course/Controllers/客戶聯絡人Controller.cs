@@ -50,8 +50,9 @@ namespace MVC5Course.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,客戶Id,職稱,姓名,Email,手機,電話")] 客戶聯絡人 客戶聯絡人)
         {
+            //db.客戶聯絡人.Find(客戶聯絡人.Email) != null -> 偏向驗證屬性，加在PartialClass
             if (ModelState.IsValid)
-            {
+            {                
                 db.客戶聯絡人.Add(客戶聯絡人);
                 db.SaveChanges();
                 return RedirectToAction("Index");

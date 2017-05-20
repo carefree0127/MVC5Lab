@@ -3,12 +3,14 @@ namespace MVC5Course.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    
+    using System.Linq;
+
     [MetadataType(typeof(客戶資料MetaData))]
     public partial class 客戶資料
     {
+        
     }
-    
+
     public partial class 客戶資料MetaData
     {
         [Required]

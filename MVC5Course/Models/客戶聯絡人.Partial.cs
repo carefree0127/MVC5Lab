@@ -3,10 +3,34 @@ namespace MVC5Course.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     
     [MetadataType(typeof(客戶聯絡人MetaData))]
-    public partial class 客戶聯絡人
+    public partial class 客戶聯絡人 : IValidatableObject
     {
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {//執行至此時，public partial class 客戶資料MetaData屬性均已驗證完畢，整個模型的驗證
+
+            var db = new 客戶資料Entities();
+
+            if (this.Id == 0)//新增前Id欄位不會有值
+            {
+                //Create
+                if (db.客戶聯絡人.Where(m => m.客戶Id == this.客戶Id && m.Email == this.Email).Any())
+                {
+                    yield return new ValidationResult("此Email已被使用!");
+                }
+            }
+            else
+            {
+                //Edit
+                if (db.客戶聯絡人.Where(m => m.客戶Id == this.客戶Id && m.Id != this.Id && m.Email == this.Email).Any())
+                {
+                    yield return new ValidationResult("此Email已被使用!");
+                }
+            }
+            yield return ValidationResult.Success;
+        }
     }
     
     public partial class 客戶聯絡人MetaData
