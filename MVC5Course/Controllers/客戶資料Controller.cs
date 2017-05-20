@@ -132,5 +132,13 @@ namespace MVC5Course.Controllers
             return View(data);
         }
         #endregion
+
+        #region 搜尋功能
+        public ActionResult search(string KeyWord)
+        {
+            var data = db.客戶資料.Where(m => m.客戶名稱.Contains(KeyWord));
+            return View("Index",data);
+        }
+        #endregion
     }
 }

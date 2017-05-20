@@ -9,6 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Search","客戶資料",FormMethod.Post))
+{
+    <input type="search" name="KeyWord" value="" placeholder="請輸入客戶名稱" />
+    <input type="submit"  value="搜尋" />
+}
+
 <table class="table">
     <tr>
         <th>
